@@ -20,7 +20,14 @@ class SoftDueDate(Component):
 	}
 
 	def validate_ticket(self, req, ticket):
-		if 'priority' not in ticket._old or ticket._old['priority'] != ticket['priority']:
+		# Set the right soft-due-date if the priority changed,
+		# if the soft due date changed, or if no soft due date was set
+		# yet
+		if (('priority' in ticket._old and
+		     ticket._old['priority'] != ticket['priority']) or
+		    ('soft_due_date' in ticket._old and
+		     ticket._old['soft_due_date'] != ticket['soft_due_date']) or
+		    (ticket['soft_due_date'] == "")):
 			seconds = self._priority_to_seconds[ticket['priority']]
 			if seconds is None:
 				return [('priority', "Priority " + ticket['priority'] + " is unknown in priority map of soft-due-date convertor")]
