@@ -58,8 +58,8 @@ to the configuration file just like the `soft_due_date` field:
 
 ## Author and license
 
-This plugin was tested against Trac 0.12.3 using an SQLite database. Your
-mileage may vary, I'm interested in hearing from you!
+This plugin was tested against Trac 0.12.3 and 1.0.1 using an SQLite database.
+Your mileage may vary, I'm interested in hearing from you!
 
 Copyright (c) 2013, Sjors Gielen
 All rights reserved.
