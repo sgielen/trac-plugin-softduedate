@@ -27,7 +27,7 @@ class SoftDueDate(Component):
 		     ticket._old['priority'] != ticket['priority']) or
 		    ('soft_due_date' in ticket._old and
 		     ticket._old['soft_due_date'] != ticket['soft_due_date']) or
-		    (ticket['soft_due_date'] == "")):
+		    (ticket['soft_due_date'] is None) or (ticket['soft_due_date'] == "")):
 			seconds = self._priority_to_seconds[ticket['priority']]
 			if seconds is None:
 				return [('priority', "Priority " + ticket['priority'] + " is unknown in priority map of soft-due-date convertor")]
